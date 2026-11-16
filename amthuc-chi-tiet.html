@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Khám phá câu chuyện và hương vị các món ngon miền Bắc.">
+    <title>Chi tiết món ăn | Du Lịch Miền Bắc</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="amthuc-chi-tiet.js" defer></script>
+</head>
+
+<body class="food-detail-page">
+    <nav class="navbar food-navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="100.jpg" alt="">
+                <span>Du Lịch Miền Bắc</span>
+            </a>
+        </div>
+        <div class="menu">
+            <a href="index.html">Trang chủ</a>
+            <a href="vungmien.html">Vùng miền</a>
+            <a href="amthuc.html" aria-current="page">Ẩm thực</a>
+            <a href="dattour.html">Đặt tour</a>
+            <a href="sanpham.html">Sản phẩm</a>
+        </div>
+    </nav>
+
+    <main class="food-page food-detail" data-food-detail>
+        <nav class="food-detail-breadcrumb" aria-label="Điều hướng">
+            <a href="amthuc.html">Ẩm thực</a>
+            <span aria-hidden="true">/</span>
+            <a id="food-region-link" href="amthuc.html">Miền Bắc</a>
+            <span aria-hidden="true">/</span>
+            <span id="food-breadcrumb-name" aria-current="page">Chi tiết món ăn</span>
+        </nav>
+
+        <section class="food-detail-hero" aria-labelledby="food-detail-title">
+            <div class="food-detail-image">
+                <img id="food-image" src="" alt="">
+                <span class="food-image-tag" id="food-image-tag"></span>
+            </div>
+            <div class="food-detail-intro">
+                <p class="food-kicker" id="food-kicker"></p>
+                <h1 id="food-detail-title"></h1>
+                <p class="food-detail-lead" id="food-lead"></p>
+                <a class="food-detail-back" id="food-back-link" href="amthuc.html">
+                    <span aria-hidden="true">←</span> Trở về danh sách món ngon
+                </a>
+            </div>
+        </section>
+
+        <section class="food-detail-story" aria-labelledby="food-story-title">
+            <div class="food-detail-story-copy">
+                <p class="food-kicker">CHUYỆN QUANH MÓN ĂN</p>
+                <h2 id="food-story-title"></h2>
+                <div id="food-story-body"></div>
+            </div>
+            <aside class="food-detail-note">
+                <span class="food-detail-note-icon" aria-hidden="true">✦</span>
+                <h3 id="food-note-title"></h3>
+                <p id="food-note-copy"></p>
+            </aside>
+        </section>
+
+        <aside class="food-video-panel food-detail-video" aria-labelledby="food-video-title">
+            <div class="food-video-intro">
+                <span class="food-video-icon" aria-hidden="true">▶</span>
+                <div>
+                    <h3 id="food-video-title">Video giới thiệu món ăn</h3>
+                    <p>Chọn video trong máy để xem thử ngay trên trang.</p>
+                </div>
+            </div>
+            <div class="food-video-actions">
+                <label class="food-upload-button">Chọn video từ máy
+                    <input class="food-video-input" type="file" accept="video/*"
+                        aria-label="Chọn video giới thiệu món ăn">
+                </label>
+            </div>
+            <p class="food-video-message" aria-live="polite">
+                Video chỉ được xem trước trên thiết bị này, chưa tải lên máy chủ.
+            </p>
+            <video class="food-local-video" controls playsinline preload="metadata" hidden
+                aria-label="Video giới thiệu món ăn"></video>
+        </aside>
+
+        <section class="food-detail-tasting" aria-labelledby="food-tasting-title">
+            <p class="food-kicker">MẸO NHỎ KHI GỌI MÓN</p>
+            <h2 id="food-tasting-title">Ăn món này sao cho ngon?</h2>
+            <div class="food-detail-tips" id="food-tips"></div>
+        </section>
+
+        <div class="food-detail-footer">
+            <p id="food-footer-copy"></p>
+            <a id="food-footer-link" href="amthuc.html">Khám phá thêm món ngon <span aria-hidden="true">→</span></a>
+        </div>
+    </main>
+</body>
+
+</html>
