@@ -36,7 +36,7 @@ Dự án tích hợp phong phú các tư liệu hình ảnh đa phương tiện 
 ## 🛠️ Công Nghệ Sử Dụng
 *   **Frontend:** HTML5, CSS3 (`style.css`), JavaScript (`amthuc-chi-tiet.js`) để xử lý hiệu ứng tương tác mượt mà.
 *   **Responsive Web Design:** Tối ưu hóa hiển thị tốt trên cả máy tính và các thiết bị di động.
-*   **AI Generated Content:** Ứng dụng công nghệ trí tuệ nhân tạo hỗ trợ lên ý tưởng nội dung, tối ưu hóa mã nguồn và xử lý hình ảnh truyền thông.
+*   **AI Generated Content:** Ứng dụng công nghệ trí tuệ nhân tạo hỗ trợ lên ý tưởng nội dung, tối ưu hóa mã nguồn và xử lý hình ảnh truyền thông đặc sắc.
 
 ---
-*Dự án được xây dựng và phát triển nhằm gìn giữ, quảng bá văn hóa Việt Nam. Nếu bạn thấy kho lưu trữ này hữu ích, hãy tặng dự án một nút ⭐ **Star** nhé!*
+*Dự án được xây dựng và phát triển nhằm gìn giữ, quảng bá văn hóa Việt Nam. Nếu bạn thấy kho lưu trữ này hữu ích, hãy tặng dự án một nút ⭐ **Star** nhé!* 
