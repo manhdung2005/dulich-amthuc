@@ -977,7 +977,6 @@ h3{
     gap: 10px;
 }
 
-.food-upload-button,
 .food-source-link {
     position: relative;
     display: inline-flex;
@@ -995,33 +994,17 @@ h3{
     transition: background 0.2s, color 0.2s;
 }
 
-.food-upload-button:hover,
+.food-source-link {
+    cursor: pointer;
+}
+
 .food-source-link:hover {
     color: #9c4a2d;
     background: #fff;
 }
 
-.food-upload-button input {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
 .food-video-message {
     grid-column: 1 / -1;
-}
-
-.food-local-video {
-    grid-column: 1 / -1;
-    width: 100%;
-    max-height: 460px;
-    border-radius: 12px;
-    background: #111;
 }
 
 .food-youtube-video {
@@ -1060,18 +1043,7 @@ body.food-detail-page {
 .food-detail-page .food-navbar {
     position: relative;
     z-index: 1;
-    background: #203d35;
     animation: none;
-    box-shadow: 0 4px 18px rgba(32, 61, 53, 0.12);
-}
-
-.food-detail-page .food-navbar .logo a,
-.food-detail-page .food-navbar .menu a {
-    color: #fffaf1;
-}
-
-.food-detail-page .food-navbar .menu a::after {
-    background: #edac65;
 }
 
 .food-detail-breadcrumb {
@@ -1260,6 +1232,32 @@ body.food-detail-page {
     text-align: left;
 }
 
+.food-story-video {
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 18px;
+    border-radius: 16px;
+    background: #e8e4da;
+}
+
+.food-story-video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.food-story-video-link {
+    display: inline-flex;
+    gap: 6px;
+    margin-top: 10px;
+    color: #244b3e;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .food-detail-story-copy p:not(.food-kicker) {
     margin-top: 13px;
     color: #5f625e;
@@ -1327,10 +1325,6 @@ body.food-detail-page {
 .food-detail-video .food-video-icon {
     color: #f5c27b;
     background: #244b3e;
-}
-
-.food-detail-video .food-local-video {
-    max-height: 420px;
 }
 
 .food-detail-tasting {
@@ -1623,7 +1617,6 @@ body.food-detail-page {
         padding: 18px;
     }
 
-    .food-upload-button,
     .food-source-link {
         width: 100%;
     }

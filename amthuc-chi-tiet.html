@@ -69,20 +69,18 @@
                 <span class="food-video-icon" aria-hidden="true">▶</span>
                 <div>
                     <h3 id="food-video-title">Video giới thiệu món ăn</h3>
-                    <p>Chọn video trong máy để xem thử ngay trên trang.</p>
+                    <p>Video được nhúng trực tiếp từ URL YouTube trong mã nguồn.</p>
                 </div>
             </div>
-            <div class="food-video-actions">
-                <label class="food-upload-button">Chọn video từ máy
-                    <input class="food-video-input" type="file" accept="video/*"
-                        aria-label="Chọn video giới thiệu món ăn">
-                </label>
-            </div>
             <p class="food-video-message" aria-live="polite">
-                Video chỉ được xem trước trên thiết bị này, chưa tải lên máy chủ.
+                Video sẽ hiển thị tại đây sau khi được cấu hình trong mã nguồn.
             </p>
-            <video class="food-local-video" controls playsinline preload="metadata" hidden
-                aria-label="Video giới thiệu món ăn"></video>
+            <iframe class="food-youtube-video" title="Video giới thiệu món ăn"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe>
+            <a class="food-source-link food-video-watch-link" target="_blank" rel="noopener noreferrer" hidden>
+                Nếu không phát được, mở video trên YouTube <span aria-hidden="true">↗</span>
+            </a>
         </aside>
 
         <section class="food-detail-tasting" aria-labelledby="food-tasting-title">

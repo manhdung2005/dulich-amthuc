@@ -358,6 +358,27 @@ const dishes = {
     }
 };
 
+// Dán URL YouTube riêng cho từng món vào đây, ví dụ: "https://youtu.be/VIDEO_ID".
+const dishVideoUrls = {
+    "tao-meo": "https://youtu.be/ZKr5gDqx2_U?si=6_YxlEwh03p29prd",
+    "nom-da-trau": "https://youtu.be/_6rRNmkualI?si=soT0X9geiaiGXJiY",
+    "ca-gap-nuong": "https://youtu.be/eTNiKE_e6pM?si=GFsUWBMzxk5SUSTt",
+    "com-lam-son-la": "https://youtu.be/WVjPd8NwMYI?si=Uo7fkK8qdQ4GJEIl",
+    "thit-muoi-chua": "",
+    "com-lam-hoa-binh": "",
+    "ca-nuong-hoa-binh": "",
+    "cam-cao-phong": "https://youtu.be/WOCn0iLDxVo?si=QBX7zd9I4FhcQpjV",
+    "lon-man-thui-luoc": "",
+    "cha-cuon-la-buoi": "",
+    "xoi-nep-nuong": "https://youtube.com/shorts/fZ_kWMdtYKg?si=IVDfOL6MoXTeDo21",
+    "cha-muc-gia-tay": "",
+    "banh-cuon-cha-muc": "",
+    "hau-nuong": "",
+    "sa-sung": "",
+    "sam-ha-long": "",
+    "bun-be-be": ""
+};
+
 const params = new URLSearchParams(window.location.search);
 const dishKey = params.get("mon");
 const dish = Object.prototype.hasOwnProperty.call(dishes, dishKey) ? dishes[dishKey] : null;
@@ -399,44 +420,24 @@ if (!dish) {
     detail.querySelector("#food-back-link").lastChild.nodeValue = ` Xem thêm món ở ${dish.region}`;
     detail.querySelector("#food-footer-link").firstChild.nodeValue = `Khám phá thêm món ngon ${dish.region} `;
     detail.querySelector("#food-video-title").textContent = `Video giới thiệu ${dish.name}`;
-    detail.querySelector(".food-video-input").setAttribute("aria-label", `Chọn video giới thiệu ${dish.name}`);
-    detail.querySelector(".food-local-video").setAttribute("aria-label", `Video giới thiệu ${dish.name}`);
-
-    const videoInput = detail.querySelector(".food-video-input");
-    const previewVideo = detail.querySelector(".food-local-video");
+    const embeddedVideo = detail.querySelector(".food-youtube-video");
     const videoMessage = detail.querySelector(".food-video-message");
-    let previewUrl = "";
+    const watchVideoLink = detail.querySelector(".food-video-watch-link");
+    embeddedVideo.title = `Video giới thiệu ${dish.name}`;
+    const videoUrl = dishVideoUrls[dishKey].trim();
+    const videoId = getYouTubeVideoId(videoUrl);
 
-    videoInput.addEventListener("change", () => {
-        const file = videoInput.files[0];
-        if (!file) return;
-
-        if (!file.type.startsWith("video/")) {
-            if (previewUrl) URL.revokeObjectURL(previewUrl);
-            previewUrl = "";
-            previewVideo.removeAttribute("src");
-            previewVideo.hidden = true;
-            previewVideo.load();
-            videoMessage.textContent = "Tệp đã chọn không phải video. Hãy chọn một tệp video khác.";
-            videoInput.value = "";
-            return;
-        }
-
-        if (previewUrl) URL.revokeObjectURL(previewUrl);
-        previewUrl = URL.createObjectURL(file);
-        previewVideo.src = previewUrl;
-        previewVideo.hidden = false;
-        previewVideo.load();
-        videoMessage.textContent = `Đang xem thử: ${file.name}. Video chỉ nằm trên thiết bị này, chưa được tải lên máy chủ.`;
-    });
-
-    previewVideo.addEventListener("error", () => {
-        videoMessage.textContent = "Không phát được tệp này. Hãy thử chọn video MP4 hoặc WebM.";
-    });
-
-    window.addEventListener("beforeunload", () => {
-        if (previewUrl) URL.revokeObjectURL(previewUrl);
-    });
+    if (videoId) {
+        embeddedVideo.src = `https://www.youtube.com/embed/${videoId}`;
+        embeddedVideo.hidden = false;
+        watchVideoLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+        watchVideoLink.hidden = false;
+        videoMessage.textContent = "Nếu video không phát trong khung, hãy mở trực tiếp trên YouTube.";
+    } else {
+        videoMessage.textContent = videoUrl
+            ? "URL YouTube trong cấu hình không hợp lệ."
+            : "Chưa có URL video cho món này. Hãy thêm URL vào dishVideoUrls trong mã nguồn.";
+    }
 
     const storyBody = detail.querySelector("#food-story-body");
     dish.story.forEach((text) => {
@@ -457,4 +458,37 @@ if (!dish) {
         article.append(number, heading, paragraph);
         tips.append(article);
     });
+}
+
+function getYouTubeVideoId(link) {
+    let url;
+    try {
+        url = new URL(link);
+    } catch {
+        return "";
+    }
+
+    const hostname = url.hostname.toLowerCase();
+    const youtubeHosts = [
+        "youtube.com",
+        "www.youtube.com",
+        "m.youtube.com",
+        "music.youtube.com",
+        "youtube-nocookie.com",
+        "www.youtube-nocookie.com"
+    ];
+    if (!["https:", "http:"].includes(url.protocol)) return "";
+
+    const segments = url.pathname.split("/").filter(Boolean);
+    let videoId = "";
+    if (hostname === "youtu.be") {
+        videoId = segments[0] || "";
+    } else if (youtubeHosts.includes(hostname) && url.pathname === "/watch") {
+        videoId = url.searchParams.get("v") || "";
+    } else if (youtubeHosts.includes(hostname) && segments.length === 2
+        && ["embed", "shorts", "live"].includes(segments[0])) {
+        videoId = segments[1];
+    }
+
+    return /^[A-Za-z0-9_-]{11}$/.test(videoId) ? videoId : "";
 }
