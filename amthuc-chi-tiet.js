@@ -67,7 +67,7 @@ const dishes = {
         region: "Sơn La",
         regionId: "son-la",
         label: "Hương nếp vùng cao",
-        image: "https://cdn.tgdd.vn/Files/2021/11/06/1396257/mua-14-dac-san-son-la-nay-ve-lam-qua-khien-ai-cung-khen-nut-no-202202171517051871.jpg",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe7zEypYUB4MN2v-rNbVZMeUeYbLTwUTAEe3Tui0EpDt_ULnW3",
         alt: "Cơm lam Sơn La",
         lead: "Nếp thơm được nướng trong ống tre, mang theo hương gạo, chút gừng và vị mộc mạc của bếp lửa.",
         storyTitle: "Hạt nếp trong ống tre",
