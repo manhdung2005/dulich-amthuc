@@ -88,7 +88,7 @@ const dishes = {
         region: "Sơn La",
         regionId: "son-la",
         label: "Món ăn truyền thống",
-        image: "https://cdn.tgdd.vn/Files/2021/11/06/1396257/mua-14-dac-san-son-la-nay-ve-lam-qua-khien-ai-cung-khen-nut-no-202202171514090751.jpg",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlvjMdPPSXAl03MCTlFiwrg9LPJ4fC-3fIfa-9NULQlQ&s=10",
         alt: "Thịt muối chua Sơn La",
         lead: "Thịt muối chua có vị chua dịu, đậm đà, là một món ăn truyền thống được nhắc đến trong ẩm thực Sơn La.",
         storyTitle: "Vị chua dịu truyền thống",
